@@ -1,23 +1,19 @@
 {
   "extends": "@nrwl/workspace/presets/core.json",
-  "npmScope": "novu-contributors-nx",
+  "npmScope": "contributors",
   "affected": {
     "defaultBase": "main"
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/node"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
-  }
+  },
+  "defaultProject": "worker"
 }

@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "global": "packages/global",
+    "worker": "packages/worker"
+  }
 }
