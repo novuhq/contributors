@@ -21,7 +21,7 @@ import {ContributorService} from "./app/contributor.service";
     typeDefs: [contributorsGql, queryGql],
     resolvers,
   });
-  server.listen().then(({ url }) => {
+  server.listen({port: process.env.APOLLO}).then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
   });
 })();

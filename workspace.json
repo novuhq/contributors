@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "api": "packages/api",
+    "client": "packages/client",
+    "client-e2e": "packages/client-e2e",
     "global": "packages/global",
     "worker": "packages/worker"
   }

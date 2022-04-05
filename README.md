@@ -14,13 +14,14 @@ Because you are awesome!
 
 We scan our Github Contributors using Orbit and give them the honor they deserved
 
-Requirements:
-Environment variable with the Orbit Workspace API
+Environment Variable Requirements:
 
-Environment variable with the Github Organization API
+- Orbit Workspace API
+- Github API
+- ApolloJS Port
 
 ```bash
-GITHUB=fcmlk345tsdfsfd ORBIT=obw_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx npm run workers
+APOLLO=3004 GITHUB=fcmlk345tsdfsfd ORBIT=obw_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx npm run workers
 ```
 
 ## 🔗 Links

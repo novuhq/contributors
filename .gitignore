@@ -36,3 +36,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/apps/client/node_modules
+/apps/client/public
+/apps/client/.cache
