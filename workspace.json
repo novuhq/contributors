@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "api": "packages/api",
     "global": "packages/global",
     "worker": "packages/worker"
   }
