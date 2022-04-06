@@ -1,9 +1,12 @@
 import { gql } from 'apollo-server';
-import { contributorsGql } from './contributors.gql';
 
 export const queryGql = gql`
+  type Response {
+    pages: Int
+    list: [Contributors]
+  }
   type Query {
-    contributors(page: Int!): [Contributors]
+    contributors(page: Int!): Response
     contributor(github: String!): Contributors
   }
 `;

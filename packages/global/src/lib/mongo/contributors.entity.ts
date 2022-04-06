@@ -3,7 +3,10 @@ import {Attributes} from "../../../../worker/src/services/orbit/orbit";
 
 interface AddedAttributes {
   last_sync: Date;
+  totalPulls: number;
   pulls: any;
+  totalLast3MonthsPulls: number;
+  last3MonthsPulls: any;
 }
 
 export const Contributors = mongoose.model<Attributes & AddedAttributes>('contributors', new mongoose.Schema({
@@ -46,5 +49,8 @@ export const Contributors = mongoose.model<Attributes & AddedAttributes>('contri
   twitter_followers: Number,
   topics: [String],
   languages: [String],
-  pulls: [Object]
+  pulls: [Object],
+  last3MonthsPulls: [Object],
+  totalPulls: {type: Number, index: true, unique: true},
+  totalLast3MonthsPulls: {type: Number, index: true, unique: true}
 }));

@@ -1,8 +1,8 @@
-import { RunnersInterface } from "./runners.interface";
-import { GithubService } from "../services/github/github.service";
-import { groupBy } from "lodash";
-import moment from "moment";
-import {Contributors} from "@contributors/global";
+import { RunnersInterface } from './runners.interface';
+import { GithubService } from '../services/github/github.service';
+import { groupBy } from 'lodash';
+import moment from 'moment';
+import { Contributors } from '@contributors/global';
 
 export class GithubInformation implements RunnersInterface {
   async handle() {
@@ -13,12 +13,19 @@ export class GithubInformation implements RunnersInterface {
     );
 
     for (const github of Object.keys(assignee)) {
+      const last3MonthsPulls = assignee[github].filter((f) =>
+        moment(f.merged_at).isAfter(moment().subtract(3, 'months'))
+      );
+
       await Contributors.updateOne(
         {
           github,
         },
         {
           $set: {
+            totalPulls: assignee[github].length,
+            totalLast3MonthsPulls: last3MonthsPulls.length,
+            last3MonthsPulls,
             pulls: assignee[github],
           },
         },
@@ -30,10 +37,10 @@ export class GithubInformation implements RunnersInterface {
   }
 
   name(): string {
-    return "Extract Github Information";
+    return 'Extract Github Information';
   }
 
   schedule(): string {
-    return "0 * * * *";
+    return '0 * * * *';
   }
 }

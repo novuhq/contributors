@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-pages-index-tsx",
+    "componentChunkName": "component---src-components-main-main-tsx",
     "path": "/",
-    "result": {"pageContext":{}},
+    "result": {"data":{"apollo":{"contributors":{"list":[{"activities_count":211},{"activities_count":879},{"activities_count":93},{"activities_count":null},{"activities_count":null},{"activities_count":56},{"activities_count":16},{"activities_count":null},{"activities_count":null},{"activities_count":12},{"activities_count":14},{"activities_count":5},{"activities_count":10},{"activities_count":8},{"activities_count":8},{"activities_count":5},{"activities_count":9},{"activities_count":12},{"activities_count":5},{"activities_count":9}]}}},"pageContext":{"page":1}},
     "staticQueryHashes": []}

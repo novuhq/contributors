@@ -3609,10 +3609,10 @@ module.exports = Object.assign;
 
 /***/ }),
 
-/***/ "./src/pages/index.tsx":
-/*!*****************************!*\
-  !*** ./src/pages/index.tsx ***!
-  \*****************************/
+/***/ "./src/components/main/main.tsx":
+/*!**************************************!*\
+  !*** ./src/components/main/main.tsx ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -3621,21 +3621,49 @@ module.exports = Object.assign;
 var _interopRequireDefault = __webpack_require__(/*! ../../node_modules/@babel/runtime/helpers/interopRequireDefault.js */ "../../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
 exports.__esModule = true;
-exports.Index = Index;
-exports["default"] = void 0;
+exports["default"] = Main;
+exports.getServerData = getServerData;
 
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "../../node_modules/@babel/runtime/regenerator/index.js"));
+
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! ../../node_modules/@babel/runtime/helpers/asyncToGenerator.js */ "../../node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
 
 var _jsxRuntime = __webpack_require__(/*! react/jsx-runtime */ "../../node_modules/react/jsx-runtime.js");
 
-function Index() {
+function Main(_ref) {
+  var data = _ref.data;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    children: "Hello World"
+    children: JSON.stringify(data)
   });
 }
 
-var _default = Index;
-exports["default"] = _default;
+function getServerData() {
+  return _getServerData.apply(this, arguments);
+}
+
+function _getServerData() {
+  _getServerData = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+    var res;
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            res = "3863711599";
+            return _context.abrupt("return", {
+              props: {
+                contributors: res
+              }
+            });
+
+          case 2:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _getServerData.apply(this, arguments);
+}
 
 /***/ }),
 
@@ -3714,14 +3742,14 @@ exports.components = {
       return _interopRequireWildcard(__webpack_require__(/*! ./../../dev-404-page.js */ "./.cache/dev-404-page.js"));
     });
   },
+  "component---src-components-main-main-tsx": function componentSrcComponentsMainMainTsx() {
+    return Promise.resolve().then(function () {
+      return _interopRequireWildcard(__webpack_require__(/*! ./../../../src/components/main/main.tsx */ "./src/components/main/main.tsx"));
+    });
+  },
   "component---src-pages-404-js": function componentSrcPages404Js() {
     return Promise.resolve().then(function () {
       return _interopRequireWildcard(__webpack_require__(/*! ./../../../src/pages/404.js */ "./src/pages/404.js"));
-    });
-  },
-  "component---src-pages-index-tsx": function componentSrcPagesIndexTsx() {
-    return Promise.resolve().then(function () {
-      return _interopRequireWildcard(__webpack_require__(/*! ./../../../src/pages/index.tsx */ "./src/pages/index.tsx"));
     });
   }
 };
