@@ -8,6 +8,7 @@ export class ContributorService {
           list: [
             {
               $sort: {
+                teammate: 1,
                 totalLast3MonthsPulls: -1,
               },
             },
