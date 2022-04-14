@@ -13,10 +13,10 @@ export class ContributorService {
               },
             },
             {
-              $skip: (page - 1) * 20,
+              $skip: (page - 1) * 30,
             },
             {
-              $limit: 20,
+              $limit: 30,
             },
           ],
           pages: [{ $count: 'pages' }],
@@ -26,7 +26,7 @@ export class ContributorService {
 
     return {
       list,
-      pages: Math.ceil(pages[0].pages / 20) + 1
+      pages: Math.ceil(+pages[0].pages / 30)
     }
   }
 

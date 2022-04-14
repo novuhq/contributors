@@ -1,27 +1,28 @@
-import { ApolloServer, gql } from 'apollo-server';
-import { queryGql } from './gql/query.gql';
-import { contributorsGql } from './gql/contributors.gql';
 import {connection} from "@contributors/global";
 import {ContributorService} from "./app/contributor.service";
+import express from 'express';
+const app = express();
+
 
 (async () => {
   await connection();
-  const resolvers = {
-    Query: {
-      contributors: function (_, params) {
-        return ContributorService.getList(params.page);
-      },
-      contributor: function(_, params) {
-        return ContributorService.getOne(params.github);
-      }
-    },
-  };
+  app.use('/contributors/:page', async (req, res) => {
+    if (!req.params.page) {
+      res.send(false);
+    }
 
-  const server = new ApolloServer({
-    typeDefs: [contributorsGql, queryGql],
-    resolvers,
+    res.json(await ContributorService.getList(+req.params.page));
   });
-  server.listen({port: process.env.APOLLO}).then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
+
+  app.use('/contributor/:name', async (req, res) => {
+    if (!req.params.name) {
+      res.send(false);
+    }
+
+    res.json(await ContributorService.getOne(req.params.name));
+  });
+
+  app.listen(process.env.EXPRESS, () => {
+    console.log('listening on port ' + process.env.EXPRESS);
   });
 })();

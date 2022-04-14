@@ -1,0 +1,30 @@
+/*
+ * Remove template code below
+ */
+:global(body) {
+  background: black;
+}
+:global(h1),
+:global(h2),
+:global(p),
+:global(pre) {
+  margin: 0;
+}
+:global(*),
+:global(::before),
+:global(::after) {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+:global(h1),
+:global(h2) {
+  font-size: inherit;
+  font-weight: inherit;
+  color: white;
+}
+:global(a) {
+  color: inherit;
+  text-decoration: inherit;
+}

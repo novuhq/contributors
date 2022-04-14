@@ -42,15 +42,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-graphql",
+      resolve: `gatsby-plugin-env-variables`,
       options: {
-        // Arbitrary name for the remote schema Query type
-        typeName: "APOLLO",
-        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
-        fieldName: "apollo",
-        // Url to query from
-        url: "http://localhost:3004/graphql",
+        allowList: ["SERVER_URL"]
       },
-    }
+    },
   ],
 };
