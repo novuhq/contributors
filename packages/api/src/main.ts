@@ -6,6 +6,10 @@ const app = express();
 
 (async () => {
   await connection();
+  app.get('/', async (req, res) => {
+    res.json({success: true});
+  });
+
   app.use('/contributors/:page', async (req, res) => {
     if (!req.params.page) {
       res.send(false);
