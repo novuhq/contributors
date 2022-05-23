@@ -92,7 +92,7 @@ import axios from 'axios';
   }
 
 const orbit = axios.create({
-  baseURL: 'https://app.orbit.love/api/v1/notifire',
+  baseURL: 'https://app.orbit.love/api/v1/novu',
   headers: {
     Authorization: `Bearer ${process.env.ORBIT}`
   }
