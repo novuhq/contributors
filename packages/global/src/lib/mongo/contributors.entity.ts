@@ -51,6 +51,6 @@ export const Contributors = mongoose.model<Attributes & AddedAttributes>('contri
   languages: [String],
   pulls: [Object],
   last3MonthsPulls: [Object],
-  totalPulls: {type: Number, index: true, unique: true},
-  totalLast3MonthsPulls: {type: Number, index: true, unique: true}
+  totalPulls: {type: Number, index: true},
+  totalLast3MonthsPulls: {type: Number, index: true}
 }));
