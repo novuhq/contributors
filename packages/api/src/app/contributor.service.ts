@@ -1,7 +1,7 @@
 import { Contributors } from '@contributors/global';
 
 export class ContributorService {
-  static async getList(page: number) {
+  static async getList() {
     const [{list, pages}] = await Contributors.aggregate([
       {
         $facet: {
@@ -11,12 +11,6 @@ export class ContributorService {
                 teammate: 1,
                 totalLast3MonthsPulls: -1,
               },
-            },
-            {
-              $skip: (page - 1) * 30,
-            },
-            {
-              $limit: 30,
             },
           ],
           pages: [{ $count: 'pages' }],

@@ -10,12 +10,8 @@ const app = express();
     res.json({success: true});
   });
 
-  app.use('/contributors/:page', async (req, res) => {
-    if (!req.params.page) {
-      res.send(false);
-    }
-
-    res.json(await ContributorService.getList(+req.params.page));
+  app.use('/contributors', async (req, res) => {
+    res.json(await ContributorService.getList());
   });
 
   app.use('/contributor/:name', async (req, res) => {
