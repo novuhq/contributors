@@ -19,7 +19,7 @@ export class ContributorService {
     ]).exec();
 
     return {
-      list: list.map(({ pulls, last3MonthsPulls, ...params }) => params),
+      list: list.map(({ pulls, last3MonthsPulls, ...params }) => ({...params, pulls: pulls.slice(0, 1)})),
       pages: Math.ceil(+pages[0].pages / 30),
     };
   }
