@@ -2,7 +2,7 @@ import { Contributors } from '@contributors/global';
 
 export class ContributorService {
   static async getList() {
-    const [{list, pages}] = await Contributors.aggregate([
+    const [{ list, pages }] = await Contributors.aggregate([
       {
         $facet: {
           list: [
@@ -19,9 +19,9 @@ export class ContributorService {
     ]).exec();
 
     return {
-      list,
-      pages: Math.ceil(+pages[0].pages / 30)
-    }
+      list: list.map(({ pulls, ...params }) => params),
+      pages: Math.ceil(+pages[0].pages / 30),
+    };
   }
 
   static getOne(github: string) {
