@@ -22,6 +22,14 @@ const app = express();
     res.json(await ContributorService.getOne(req.params.name));
   });
 
+  app.use('/badge/:name', async (req, res) => {
+    if (!req.params.name) {
+      res.send(false);
+    }
+
+    res.json(await ContributorService.getBadge(req.params.name));
+  });
+
   app.listen(process.env.EXPRESS, () => {
     console.log('listening on port ' + process.env.EXPRESS);
   });
