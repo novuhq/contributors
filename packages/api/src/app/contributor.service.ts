@@ -46,6 +46,7 @@ export class ContributorService {
     return {
       name: one.name,
       avatar_url: one.avatar_url,
+      totalPulls: one.pulls.length,
       pulls: Object.keys(badgeCalculation).map((b) => ({
         total: b,
         date: badgeCalculation[b],
