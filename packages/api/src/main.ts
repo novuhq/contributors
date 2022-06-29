@@ -1,6 +1,7 @@
 import {connection} from "@contributors/global";
 import {ContributorService} from "./app/contributor.service";
 import express from 'express';
+import {IssuesService} from "./app/issues.service";
 const app = express();
 
 
@@ -8,6 +9,10 @@ const app = express();
   await connection();
   app.get('/', async (req, res) => {
     res.json({success: true});
+  });
+
+  app.use('/issues', async (req, res) => {
+    res.json({issues: await IssuesService.getList()});
   });
 
   app.use('/contributors', async (req, res) => {

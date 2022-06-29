@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 
 export interface User {
   login: string;
@@ -596,6 +597,22 @@ const github = axios.create({
 });
 
 export class GithubService {
+  static async loadIssues() {
+    const load = await GithubService.GithubLoadIssues();
+    return load
+      .filter((f) => !f.merged_at && !f.assignee)
+      .sort(
+        (a, b) =>
+          // @ts-ignore
+          moment(b.created_at).toDate() - moment(a.created_at).toDate()
+      )
+      .map((l) => ({
+        created_at: l.created_at,
+        title: l.title,
+        url: l.html_url,
+      }));
+  }
+
   static async loadPullRequests(): Promise<PullsList[]> {
     const names = await GithubService.loadRepositories();
     const pulls = [];
@@ -611,7 +628,14 @@ export class GithubService {
     return pulls;
   }
 
-  static async GithubProfileInformation(githubName: string): Promise<GithubInformation> {
+  static async GithubLoadIssues(): Promise<any> {
+    const { data } = await github.get(`/repos/novuhq/novu/issues?per_page=100`);
+    return data;
+  }
+
+  static async GithubProfileInformation(
+    githubName: string
+  ): Promise<GithubInformation> {
     const { data } = await github.get(`/users/${githubName}`);
     return data;
   }
