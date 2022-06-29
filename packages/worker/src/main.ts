@@ -10,8 +10,8 @@ import {GithubIssues} from "./runners/issues";
   await connection();
   RunnerService([
     new GithubIssues(),
-    // new PullContributors(),
-    // new GithubInformation(),
-    // new PullMissingInformation()
+    new PullContributors(),
+    new GithubInformation(),
+    new PullMissingInformation()
   ]);
 })();
