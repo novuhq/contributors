@@ -600,7 +600,7 @@ export class GithubService {
   static async loadIssues() {
     const load = await GithubService.GithubLoadIssues();
     return load
-      .filter((f) => !f.merged_at && !f.assignee)
+      .filter((f) => !f.merged_at && !f.assignee && f.html_url.indexOf('issues') > -1)
       .sort(
         (a, b) =>
           // @ts-ignore
