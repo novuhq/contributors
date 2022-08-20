@@ -3,18 +3,11 @@ import moment from 'moment';
 
 export class ContributorService {
   static async getList() {
-    const [{ list, pages }] = await Contributors.aggregate([
+    const list = await Contributors.aggregate([
       {
-        $facet: {
-          list: [
-            {
-              $sort: {
-                teammate: 1,
-                totalLast3MonthsPulls: -1,
-              },
-            },
-          ],
-          pages: [{ $count: 'pages' }],
+        $sort: {
+          teammate: 1,
+          totalLast3MonthsPulls: -1,
         },
       },
     ]).exec();
@@ -24,7 +17,7 @@ export class ContributorService {
         ...params,
         pulls: pulls.slice(0, 1),
       })),
-      pages: Math.ceil(+pages[0].pages / 30),
+      pages: 10000,
     };
   }
 
@@ -36,7 +29,7 @@ export class ContributorService {
       .reduce(
         (all, current) => {
           if (all.counter === 1 || all.counter === 3 || all.counter === 7) {
-            all.values[all.counter] = moment(current.merged_at)
+            all.values[all.counter] = moment(current.merged_at);
           }
           all.counter += 1;
           return all;
