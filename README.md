@@ -12,7 +12,7 @@
 Because you are awesome!
 </p>
 
-We sync our Github Contributors using Orbit.love and showcase their work on the Novu contributors page.
+We sync our GitHub Contributors using Orbit.love and showcase their work on the Novu contributors page.
 
 Environment Variable Requirements:
 
