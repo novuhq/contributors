@@ -33,7 +33,8 @@ export class ContributorService {
         $project: {
           _id: true,
           github: true,
-          avatar_url: true
+          avatar_url: true,
+          name: true
         }
       }
     ]).exec();
