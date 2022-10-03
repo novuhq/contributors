@@ -21,6 +21,29 @@ export class ContributorService {
     };
   }
 
+  static async getListMini() {
+    const list = await Contributors.aggregate([
+      {
+        $sort: {
+          teammate: 1,
+          totalLast3MonthsPulls: -1,
+        },
+      },
+      {
+        $project: {
+          _id: true,
+          github: true,
+          avatar_url: true
+        }
+      }
+    ]).exec();
+
+    return {
+      list: list,
+      pages: 10000,
+    };
+  }
+
   static async getBadge(github: string) {
     const one = await ContributorService.getOne(github);
     const badgeCalculation = one.pulls

@@ -19,6 +19,10 @@ const app = express();
     res.json(await ContributorService.getList());
   });
 
+  app.use('/contributors-mini', async (req, res) => {
+    res.json(await ContributorService.getListMini());
+  });
+
   app.use('/contributor/:name', async (req, res) => {
     if (!req.params.name) {
       res.send(false);
