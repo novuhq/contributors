@@ -34,7 +34,8 @@ export class ContributorService {
           _id: true,
           github: true,
           avatar_url: true,
-          name: true
+          name: true,
+          totalPulls: true
         }
       }
     ]).exec();
