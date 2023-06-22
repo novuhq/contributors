@@ -1,8 +1,11 @@
-<p align="center">
-  <a href="https://novu.co">
-    <img width="200" src="https://uploads-ssl.webflow.com/6130b4d29bb0ab09e14ae9ee/6244bed8b4067bbaaa8dd1f4_novu-logo-gradient-formerly-notifire-dark-background.png">
+<div align="center">
+  <a href="https://novu.co" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/2233092/213641039-220ac15f-f367-4d13-9eaf-56e79433b8c1.png">
+    <img src="https://user-images.githubusercontent.com/2233092/213641043-3bbb3f21-3c53-4e67-afe5-755aeb222159.png" width="200" alt="Novu Logo"/>
+  </picture>
   </a>
-</p>
+</div>
 
 <p align="center" style="font-size: 30px; font-weight: bold">
 ⭐⭐⭐️ Contributors Project ⭐⭐⭐
@@ -25,11 +28,8 @@ APOLLO=3004 GITHUB=fcmlk345tsdfsfd ORBIT=obw_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## 🔗 Links
+
 - [Home page](https://novu.co/)
-
-
-
-
 
 ## 🦸 Community Heroes
 
