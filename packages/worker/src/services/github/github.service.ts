@@ -1,5 +1,8 @@
 import axios from 'axios';
 import moment from 'moment';
+import { graphql } from "@octokit/graphql";
+import fetch from "node-fetch";
+import {groupBy, uniqBy} from "lodash";
 
 export interface User {
   login: string;
@@ -589,6 +592,40 @@ export interface GithubInformation {
   plan: Plan;
 }
 
+
+export interface Search {
+  search: Search
+}
+
+export interface Search {
+  issueCount: number
+  edges: Edge[]
+  pageInfo: PageInfo
+}
+
+export interface Edge {
+  node: Node
+}
+
+export interface Node {
+  id: string
+  title: string
+  mergedAt: string
+  createdAt: string
+  url: string
+  author: Author
+}
+
+export interface Author {
+  login: string
+}
+
+export interface PageInfo {
+  endCursor: string
+  hasNextPage: boolean
+}
+
+
 const github = axios.create({
   baseURL: 'https://api.github.com',
   headers: {
@@ -596,7 +633,68 @@ const github = axios.create({
   },
 });
 
+const graphqlWithAuth = graphql.defaults({
+  request: {
+    fetch: fetch,
+  },
+  headers: {
+    authorization: `Basic ${process.env.GITHUB}`,
+  },
+});
+
 export class GithubService {
+  static async getMembersList() {
+    const load: Array<{id: string, github: string, title: string, url: string, createdAt: string, mergedAt: string}> = await GithubService.getMembersListProcess();
+    return Object.values(groupBy(uniqBy(load, (p) => p.id), (p) => p.github)).reduce((all, current) => {
+      return [
+        ...all,
+        {
+          attributes: {
+            github: current[0].github,
+            totalPulls: current.length,
+            pulls: current.map((c) => ({id: c.id, title: c.title, html_url: c.url, created_at: c.createdAt, merged_at: c.mergedAt})),
+            get last3MonthsPulls() {
+              return this.pulls.filter((p) => moment(p.created_at).isAfter(moment().subtract(3, 'months')));
+            }
+          }
+        }
+      ]
+    }, []) as Array<{attributes: {github: string, totalPulls: number, pulls: Array<{id: string, title: string, html_url: string, created_at: string, merged_at: string}>}}>;
+  }
+  static async getMembersListProcess(createdAt?: string) {
+    console.log('getting after', createdAt);
+    // const repositories = await GithubService.loadRepositories();
+    const load: Search = await graphqlWithAuth(`
+      query {
+        search(query: "repo:novuhq/novu is:pr is:merged sort:created-asc ${createdAt ? `created:>${createdAt}` : ''}", type: ISSUE, first: 100) {
+          issueCount
+          edges {
+            node {
+              ... on PullRequest {
+                id
+                title
+                mergedAt
+                createdAt
+                url
+                author {
+                  login
+                }
+              }
+            }
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+          }
+        }
+      }
+    `);
+
+    return [
+      ...load.search.edges.filter(f => f?.node?.author?.login).map((l) => ({id: l.node.id, title: l.node.title, mergedAt: l.node.mergedAt, createdAt: l.node.createdAt, url: l.node.url, github: l.node.author.login})),
+      ...load?.search?.edges?.length > 0 ? await GithubService.getMembersListProcess(load.search.edges[load.search.edges.length - 1].node.createdAt) : []
+    ]
+  }
   static async loadIssues() {
     const load = await GithubService.GithubLoadIssues();
     return load

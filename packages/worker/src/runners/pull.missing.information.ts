@@ -3,6 +3,25 @@ import { Contributors } from '@contributors/global';
 import {GithubService} from "../services/github/github.service";
 import {green} from "cli-color";
 
+const teamMembers = [
+  'scopsy',
+  'djabarovgeorge',
+  'davidsoderberg',
+  'ainouzgali',
+  'LetItRock',
+  'BiswaViraj',
+  'p-fernandez',
+  'jainpawan21',
+  'renovate[bot]',
+  'Cliftonz',
+  'sumitsaurabh927',
+  'unicodeveloper',
+  'ComBarnea',
+  'renovate-bot',
+  'iampearceman',
+  'nevo-david',
+  'oba2311',
+]
 export class PullMissingInformation implements RunnersInterface {
   name(): string {
     return 'Pull Missing Information';
@@ -32,7 +51,7 @@ export class PullMissingInformation implements RunnersInterface {
           bio,
           avatar_url,
           name,
-          teammate: false,
+          teammate: teamMembers.indexOf(contributor.github) !== -1,
           company,
           location,
           created_at: new Date()

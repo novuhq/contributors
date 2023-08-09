@@ -1,6 +1,6 @@
-import { Orbit } from "../services/orbit/orbit";
 import { RunnersInterface } from "./runners.interface";
 import {Contributors} from "@contributors/global";
+import {GithubService} from "../services/github/github.service";
 
 export class PullContributors implements RunnersInterface {
   name(): string {
@@ -8,7 +8,7 @@ export class PullContributors implements RunnersInterface {
   }
 
   async handle() {
-    for (const contributor of await Orbit.getAllMemberList()) {
+    for (const contributor of await GithubService.getMembersList()) {
       await Contributors.updateOne(
         {
           github: contributor.attributes.github,

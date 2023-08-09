@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@octokit/graphql": "^7.0.1",
     "@types/isomorphic-fetch": "0.0.36",
     "apollo-server": "^3.6.7",
     "axios": "^0.26.1",
