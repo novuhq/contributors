@@ -60,7 +60,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [novuhq/contributors](https://github.com/novuhq/contributors)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|59<br/>Tools used|01/05/24 <br/>Report generated|
+|60<br/>Tools used|01/11/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -263,12 +263,13 @@ Full tech stack [here](/techstack.md)
 </table>
 
 
-## <img src='https://img.stackshare.io/group.svg' /> Open source packages (38)</h2>
+## <img src='https://img.stackshare.io/group.svg' /> Open source packages (39)</h2>
 
-## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (38)
+## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (39)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
+|[@apollo/client](https://www.npmjs.com/@apollo/client)|v3.5.10|04/06/22|Nevo David |N/A|N/A|
 |[@testing-library/react](https://www.npmjs.com/@testing-library/react)|v12.1.2|04/05/22|Nevo David |MIT|N/A|
 |[@testing-library/react-hooks](https://www.npmjs.com/@testing-library/react-hooks)|v7.0.2|04/05/22|Nevo David |MIT|N/A|
 |[@types/isomorphic-fetch](https://www.npmjs.com/@types/isomorphic-fetch)|v0.0.36|04/06/22|Nevo David |MIT|N/A|
