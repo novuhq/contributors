@@ -2,6 +2,7 @@ import {connection} from "@contributors/global";
 import {ContributorService} from "./app/contributor.service";
 import express from 'express';
 import {IssuesService} from "./app/issues.service";
+import {GithubService} from '../../worker/src/services/github/github.service';
 const app = express();
 
 
@@ -17,6 +18,10 @@ const app = express();
 
   app.use('/contributors', async (req, res) => {
     res.json(await ContributorService.getList());
+  });
+
+  app.use('/team-members', async (req, res) => {
+    res.json(await GithubService.getTeamMembers());
   });
 
   app.use('/contributors-mini', async (req, res) => {

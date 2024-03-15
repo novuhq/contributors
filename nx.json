@@ -1,5 +1,6 @@
 {
-  "extends": "@nrwl/workspace/presets/core.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "extends": "nx/presets/npm.json",
   "npmScope": "contributors",
   "affected": {
     "defaultBase": "main"
@@ -9,13 +10,13 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "OGJlYTNlM2ItYmU5Ni00Mzg2LWIwZGQtMzFiOGExZDZiZWFjfHJlYWQtd3JpdGU="
       }
     }
   },
-  "defaultProject": "worker",
   "generators": {
     "@nrwl/react": {
       "application": {
@@ -27,5 +28,15 @@
         "style": "scss"
       }
     }
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
+    }
+  ]
 }
