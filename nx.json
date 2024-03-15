@@ -9,13 +9,12 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
-  "defaultProject": "worker",
   "generators": {
     "@nrwl/react": {
       "application": {
@@ -27,5 +26,16 @@
         "style": "scss"
       }
     }
-  }
+  },
+  "nxCloudAccessToken": "OGJlYTNlM2ItYmU5Ni00Mzg2LWIwZGQtMzFiOGExZDZiZWFjfHJlYWQtd3JpdGU=",
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+      }
+    }
+  ]
 }
