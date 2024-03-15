@@ -12,7 +12,6 @@ module.exports = composePlugins(
     options.outputPath = 'dist/packages/worker';
     options.tsConfig = 'packages/worker/tsconfig.app.json';
     options.main = 'packages/worker/src/main.ts';
-    console.log("GOT HERE");
 
     options.fileReplacements = [
       {
