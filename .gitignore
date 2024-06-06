@@ -5,7 +5,7 @@
 /tmp
 /out-tsc
 # dependencies
-/node_modules
+node_modules
 packages/client/.cache
 packages/client/public/page-data
 # IDEs and editors
@@ -38,6 +38,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/apps/client/node_modules
 /apps/client/public
 /apps/client/.cache
+.nx
